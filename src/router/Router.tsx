@@ -3,10 +3,11 @@ import ProtectedRoutes from './ProtectedRoutes';
 import Base from '../layouts/Base';
 import { Login } from '../pages/login/Login';
 import { Register } from '../pages/register/Register';
-import Home from '../pages/Home';
+import { Home } from '../pages/Home';
+import { UserLoader } from './loaders/UserLoader';
 
 const router = createBrowserRouter([
-    {   
+    {
         element: <Base />,
         children: [
             {
@@ -28,7 +29,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home />
+                element: <Home />,
+                loader: UserLoader,
             },
             {
                 path: '*',

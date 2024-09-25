@@ -1,6 +1,6 @@
 import Api from '../Api';
 
-interface IUser {
+export interface IUser {
     avatar: string;
     interesses: {
         id: number;

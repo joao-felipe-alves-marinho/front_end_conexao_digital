@@ -1,23 +1,17 @@
-import React from 'react';
+
 import { useLoaderData } from 'react-router-dom';
+import { IUser } from '../services/api/userService/UserService';
 
-interface LoaderData {
-    username: string;
-}
-
-const Home: React.FC = () => {
-    const { username } = useLoaderData() as LoaderData;
+export function Home() {
+    const user = useLoaderData() as IUser | null;
+    if (!user) {
+        return <p>User not found or not logged in.</p>;
+    }
 
     return (
         <div>
-            <header>
-                <h1>Welcome, {username}!</h1>
-            </header>
-            <main>
-                <p>This is the home page.</p>
-            </main>
+            <h1>Home</h1>
+            <p>Bem-vindo, {user?.nome}!</p>
         </div>
     );
 };
-
-export default Home;

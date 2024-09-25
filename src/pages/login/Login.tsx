@@ -15,7 +15,7 @@ interface LoginForm {
 
 const loginSchema = yup.object({
     username: yup.string().lowercase().required('Esse campo é obrigatorio.').email('E-mail invalido.').min(5, 'O e-mail deve ter pelo menos 5 caracteres').max(255, 'O e-mail deve ter no máximo 255 caracteres.'),
-    password: yup.string().required('Esse campo é obrigatorio.').min(5, 'A senha deve ter pelo menos 5 caracteres.').max(255, 'A senha deve ter no máximo 255 caracteres.'),
+    password: yup.string().required('Esse campo é obrigatorio.').max(255, 'A senha deve ter no máximo 255 caracteres.'),
 });
 
 

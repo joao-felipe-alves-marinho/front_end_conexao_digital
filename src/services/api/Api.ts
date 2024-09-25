@@ -32,19 +32,17 @@ Api.interceptors.response.use(
         if (error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
             const refreshToken = localStorage.getItem('refreshToken');
-            const response = await axios.post((import.meta.env.VITE_API_URL + '/auth/refresh'), { refreshToken });
-            if (refreshToken) {
-                try {
-                    const newAccessToken = response.data.accessToken;
-                    localStorage.setItem('accessToken', newAccessToken);
-                    originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-                    return axios(originalRequest);
-                } catch {
-                    localStorage.removeItem('accessToken');
-                    localStorage.removeItem('refreshToken');
-                    window.location.href = '/login';
+            await Api.post('/auth/refresh', { refreshToken }).then((res) => {
+                if (res.status === 200) {
+                    localStorage.setItem('accessToken', res.data.accessToken);
+                    localStorage.setItem('refreshToken', res.data.refreshToken);
+                    return Api(originalRequest);
                 }
-            }
+            }).catch(() => {
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('refreshToken');
+                window.location.href = '/login';
+            });
         }
         return Promise.reject(error);
     }
