@@ -1,4 +1,4 @@
-import Api from "../Api";
+import Api from '../Api';
 
 interface IUser {
     id: number;
@@ -35,18 +35,18 @@ interface ILogoutResponse {
 }
 
 export const loginUser = async (payload: ILoginPayload) => {
-    const response = await Api.post("/auth/login", payload);
+    const response = await Api.post('/auth/login', payload);
 
     if (response.status === 200) {
         const data: ILoginResponse = response.data;
-        localStorage.setItem("accessToken", data.access);
-        localStorage.setItem("refreshToken", data.refresh);
+        localStorage.setItem('accessToken', data.access);
+        localStorage.setItem('refreshToken', data.refresh);
         return data.user;
     }
 };
 
 export const logoutUser = async () => {
-    const response = await Api.post("/auth/logout");
+    const response = await Api.post('/auth/logout');
 
     if (response.status === 200) {
         const data: ILogoutResponse = response.data;
@@ -54,5 +54,6 @@ export const logoutUser = async () => {
     }
 };
 
-
-
+export const isAuthenticated = (): boolean => {
+    return localStorage.getItem('accessToken') !== null;
+};

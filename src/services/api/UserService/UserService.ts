@@ -1,4 +1,4 @@
-import Api from "../Api";
+import Api from '../Api';
 
 interface IUser {
     avatar: string;
@@ -42,21 +42,21 @@ interface IUser {
     resumo: string;
 }
 
-type FromUser = Pick<IUser, "id" | "nome" | "email">
+type FromUser = Pick<IUser, 'id' | 'nome' | 'email'>
 
-interface ICreateUserPayload {
+export interface ICreateUserPayload {
     email: string;
     nome: string;
     password: string;
     idade: number;
-    genero: string;
+    genero: 'M' | 'F' | 'O'
     telefone: string;
-    deficiencia: boolean;
-    resumo: string;
-    avatar: string;
+    deficiencia?: boolean;
+    resumo?: string;
+    avatar?: string;
 }
 
-type IUpdateUserPayload = Partial<Omit<ICreateUserPayload, "password">>;
+type IUpdateUserPayload = Partial<Omit<ICreateUserPayload, 'password'>>;
 
 interface IInteresse {
     id: number;
@@ -64,7 +64,7 @@ interface IInteresse {
     user: FromUser;
 }
 
-type ICreateOrUpdateInteressePayload = Pick<IInteresse, "nome">;
+type ICreateOrUpdateInteressePayload = Pick<IInteresse, 'nome'>;
 
 interface IHabilidade {
     id: number;
@@ -73,7 +73,7 @@ interface IHabilidade {
     user: FromUser;
 }
 
-type ICreateOrUpdateHabilidadePayload = Pick<IHabilidade, "nome" | "nivel">;
+type ICreateOrUpdateHabilidadePayload = Pick<IHabilidade, 'nome' | 'nivel'>;
 
 
 interface IFormacaoAcademica {
@@ -86,7 +86,7 @@ interface IFormacaoAcademica {
     user: FromUser;
 }
 
-type ICreateOrUpdateFormacaoAcademicaPayload = Pick<IFormacaoAcademica, "curso" | "instituicao" | "ano_inicio" | "ano_conclusao" | "semestre">;
+type ICreateOrUpdateFormacaoAcademicaPayload = Pick<IFormacaoAcademica, 'curso' | 'instituicao' | 'ano_inicio' | 'ano_conclusao' | 'semestre'>;
 
 interface IExperienciaProfissional {
     id: number;
@@ -98,7 +98,7 @@ interface IExperienciaProfissional {
     user: FromUser;
 }
 
-type ICreateOrUpdateExperienciaProfissionalPayload = Pick<IExperienciaProfissional, "cargo" | "empresa" | "ano_inicio" | "ano_fim" | "descricao">;
+type ICreateOrUpdateExperienciaProfissionalPayload = Pick<IExperienciaProfissional, 'cargo' | 'empresa' | 'ano_inicio' | 'ano_fim' | 'descricao'>;
 
 interface IProjeto {
     id: number;
@@ -108,12 +108,12 @@ interface IProjeto {
     user: FromUser;
 }
 
-type ICreateOrUpdateProjetoPayload = Pick<IProjeto, "nome" | "descricao" | "link">;
+type ICreateOrUpdateProjetoPayload = Pick<IProjeto, 'nome' | 'descricao' | 'link'>;
 
 
 // Create New User
 export const createUser = async (payload: ICreateUserPayload) => {
-    const response = await Api.post("/admin/users", payload);
+    const response = await Api.post('/admin/users', payload);
 
     if (response.status === 201) {
         const data: IUser = response.data;
@@ -123,7 +123,7 @@ export const createUser = async (payload: ICreateUserPayload) => {
 
 // User
 export const getMe = async () => {
-    const response = await Api.get("/me");
+    const response = await Api.get('/me');
 
     if (response.status === 200) {
         const data: IUser = response.data;
@@ -132,7 +132,7 @@ export const getMe = async () => {
 };
 
 export const updateUser = async (payload: IUpdateUserPayload) => {
-    const response = await Api.put("/me", payload);
+    const response = await Api.put('/me', payload);
 
     if (response.status === 200) {
         const data: IUser = response.data;
@@ -141,7 +141,7 @@ export const updateUser = async (payload: IUpdateUserPayload) => {
 };
 
 export const deleteUser = async () => {
-    const response = await Api.delete("/me");
+    const response = await Api.delete('/me');
 
     if (response.status === 204) {
         return;
@@ -150,7 +150,7 @@ export const deleteUser = async () => {
 
 // User Interesses
 export const createInteresse = async (payload: ICreateOrUpdateInteressePayload) => {
-    const response = await Api.post("/me/interesses", payload);
+    const response = await Api.post('/me/interesses', payload);
 
     if (response.status === 201) {
         const data: IInteresse = response.data;
@@ -159,7 +159,7 @@ export const createInteresse = async (payload: ICreateOrUpdateInteressePayload) 
 };
 
 export const getInteresses = async () => {
-    const response = await Api.get("/me/interesses");
+    const response = await Api.get('/me/interesses');
 
     if (response.status === 200) {
         const data: IInteresse[] = response.data;
@@ -177,7 +177,7 @@ export const deleteInteresse = async (interesse_id: number) => {
 
 // User Habilidades
 export const createHabilidade = async (payload: ICreateOrUpdateHabilidadePayload) => {
-    const response = await Api.post("/me/habilidades", payload);
+    const response = await Api.post('/me/habilidades', payload);
 
     if (response.status === 201) {
         const data: IHabilidade = response.data;
@@ -186,7 +186,7 @@ export const createHabilidade = async (payload: ICreateOrUpdateHabilidadePayload
 };
 
 export const getHabilidades = async () => {
-    const response = await Api.get("/me/habilidades");
+    const response = await Api.get('/me/habilidades');
 
     if (response.status === 200) {
         const data: IHabilidade[] = response.data;
@@ -213,7 +213,7 @@ export const deleteHabilidade = async (habilidade_id: number) => {
 
 // User Formacoes Academicas
 export const createFormacaoAcademica = async (payload: ICreateOrUpdateFormacaoAcademicaPayload) => {
-    const response = await Api.post("/me/formacoes-academicas", payload);
+    const response = await Api.post('/me/formacoes-academicas', payload);
 
     if (response.status === 201) {
         const data: IFormacaoAcademica = response.data;
@@ -222,7 +222,7 @@ export const createFormacaoAcademica = async (payload: ICreateOrUpdateFormacaoAc
 };
 
 export const getFormacoesAcademicas = async () => {
-    const response = await Api.get("/me/formacoes-academicas");
+    const response = await Api.get('/me/formacoes-academicas');
 
     if (response.status === 200) {
         const data: IFormacaoAcademica[] = response.data;
@@ -249,7 +249,7 @@ export const deleteFormacaoAcademica = async (formacao_academica_id: number) => 
 
 // User Experiencias Profissionais
 export const createExperienciaProfissional = async (payload: ICreateOrUpdateFormacaoAcademicaPayload) => {
-    const response = await Api.post("/me/experiencias-profissionais", payload);
+    const response = await Api.post('/me/experiencias-profissionais', payload);
 
     if (response.status === 201) {
         const data: IFormacaoAcademica = response.data;
@@ -258,7 +258,7 @@ export const createExperienciaProfissional = async (payload: ICreateOrUpdateForm
 };
 
 export const getExperienciasProfissionais = async () => {
-    const response = await Api.get("/me/experiencias-profissionais");
+    const response = await Api.get('/me/experiencias-profissionais');
 
     if (response.status === 200) {
         const data: IExperienciaProfissional[] = response.data;
@@ -285,7 +285,7 @@ export const deleteExperienciaProfissional = async (experiencia_profissional_id:
 
 // User Projetos
 export const createProjeto = async (payload: ICreateOrUpdateProjetoPayload) => {
-    const response = await Api.post("/me/projetos", payload);
+    const response = await Api.post('/me/projetos', payload);
 
     if (response.status === 201) {
         const data: IProjeto = response.data;
@@ -294,7 +294,7 @@ export const createProjeto = async (payload: ICreateOrUpdateProjetoPayload) => {
 };
 
 export const getProjetos = async () => {
-    const response = await Api.get("/me/projetos");
+    const response = await Api.get('/me/projetos');
 
     if (response.status === 200) {
         const data: IProjeto[] = response.data;

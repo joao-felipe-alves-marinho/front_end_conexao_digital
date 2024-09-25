@@ -1,22 +1,22 @@
-import { RouterProvider } from "react-router-dom";
-import { ThemeProvider } from "@mui/material";
+import { RouterProvider } from 'react-router-dom';
 
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import Light from "./themes/Light.ts";
-import { ptBR } from "date-fns/locale";
-import router from "./router/Router";
-
-
-
-import { useEffect, useState } from "react";
-import { loginUser } from "./services/api/authService/AuthService";
-import Api from "./services/api/Api";
+import router from './router/Router';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
+import { ptBR } from 'date-fns/locale';
+import { ThemeProvider } from '@mui/material';
+import Light  from './themes/Light';
 
 function App() {
 
     return (
-        <div></div>
+        <>
+            <ThemeProvider theme={Light}>
+                <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR}>
+                    <RouterProvider router={router} />
+                </LocalizationProvider>
+            </ThemeProvider>
+        </>
     );
 }
 
