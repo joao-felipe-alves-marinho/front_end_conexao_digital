@@ -79,11 +79,11 @@ export function Home() {
                     </Box>
                     <Stack gap={2}>
                         <Divider />
-                        {interesses ? (
+                        {interesses.length > 0 ? (
                             <Interesses interesses={interesses} setInteresses={setInteresses} />
                         ) : (
                             <Typography variant='body1' color='textSecondary'>
-                                <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar interesse action */ }}>
+                                <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => document.getElementById('fab-add-interesse')?.click()}>
                                     Adicione um interesse ao seu perfil!
                                 </Box>
                             </Typography>

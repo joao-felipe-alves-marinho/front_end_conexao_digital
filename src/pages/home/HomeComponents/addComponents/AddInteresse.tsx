@@ -34,7 +34,7 @@ export const AddInteresse = (props: IInteresseProps) => {
     return (
         <>
             <Tooltip title='Adicionar um novo interesse' arrow placement='top'>
-                <Fab color='success' aria-label='add-interesse' size='medium' onClick={toggleOpen}>
+                <Fab id='fab-add-interesse' color='success' aria-label='add-interesse' size='medium' onClick={toggleOpen}>
                     <Icon>add</Icon>
                 </Fab>
             </Tooltip>
