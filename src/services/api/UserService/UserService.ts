@@ -58,7 +58,7 @@ export interface ICreateUserPayload {
 
 export type TUpdateUserPayload = Partial<Omit<ICreateUserPayload, 'password'>>;
 
-interface IInteresse {
+export interface IInteresse {
     id: number;
     nome: string;
     user: TFromUser;
@@ -152,7 +152,7 @@ export const deleteUser = async () => {
 export const createInteresse = async (payload: TCreateOrUpdateInteressePayload) => {
     const response = await Api.post('/me/interesses', payload);
 
-    if (response.status === 201) {
+    if (response.status === 200) {
         const data: IInteresse = response.data;
         return data;
     }
@@ -179,7 +179,7 @@ export const deleteInteresse = async (interesse_id: number) => {
 export const createHabilidade = async (payload: TCreateOrUpdateHabilidadePayload) => {
     const response = await Api.post('/me/habilidades', payload);
 
-    if (response.status === 201) {
+    if (response.status === 200) {
         const data: IHabilidade = response.data;
         return data;
     }
@@ -215,7 +215,7 @@ export const deleteHabilidade = async (habilidade_id: number) => {
 export const createFormacaoAcademica = async (payload: TCreateOrUpdateFormacaoAcademicaPayload) => {
     const response = await Api.post('/me/formacoes-academicas', payload);
 
-    if (response.status === 201) {
+    if (response.status === 200) {
         const data: IFormacaoAcademica = response.data;
         return data;
     }
@@ -251,7 +251,7 @@ export const deleteFormacaoAcademica = async (formacao_academica_id: number) => 
 export const createExperienciaProfissional = async (payload: TCreateOrUpdateFormacaoAcademicaPayload) => {
     const response = await Api.post('/me/experiencias-profissionais', payload);
 
-    if (response.status === 201) {
+    if (response.status === 200) {
         const data: IFormacaoAcademica = response.data;
         return data;
     }
@@ -287,7 +287,7 @@ export const deleteExperienciaProfissional = async (experiencia_profissional_id:
 export const createProjeto = async (payload: TCreateOrUpdateProjetoPayload) => {
     const response = await Api.post('/me/projetos', payload);
 
-    if (response.status === 201) {
+    if (response.status === 200) {
         const data: IProjeto = response.data;
         return data;
     }

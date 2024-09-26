@@ -1,8 +1,9 @@
+import { useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
-import { Box, Card, CardActions, CardContent, Divider, Fab, Icon, Stack, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Card, CardActions, CardContent, Divider, Fab, Icon, Stack, Tooltip, Typography } from '@mui/material';
 
 import { IUserContext } from '../../layouts/BaseAuth';
-import { EditResumo, EditUser, ExperienciasProfissionais, FormacoesAcademicas, Habilidades, Interesses, Projetos,  } from './HomeComponents';
+import { AddInteresse, EditResumo, EditUser, ExperienciasProfissionais, FormacoesAcademicas, Habilidades, Interesses, Projetos,  } from './HomeComponents';
 
 
 export function Home() {
@@ -10,6 +11,12 @@ export function Home() {
     if (!user) {
         return <p>User not found or not logged in.</p>;
     }
+
+    const [interesses, setInteresses] = useState(user.interesses);
+    const [habilidades, setHabilidades] = useState(user.habilidades);
+    const [formacoesAcademicas, setFormacoesAcademicas] = useState(user.formacoes_academicas);
+    const [experienciasProfissionais, setExperienciasProfissionais] = useState(user.experiencias_profissionais);
+    const [projetos, setProjetos] = useState(user.projetos);
 
     return (
         <Stack my={2} gap={4}>
@@ -67,17 +74,13 @@ export function Home() {
                     <Box display='flex' justifyContent='space-between' alignItems='center'>
                         <Typography variant='h5' fontWeight='bold' >Interesses:</Typography>
                         <CardActions>
-                            <Tooltip title='Adicionar um novo interesse' arrow placement='top' >
-                                <Fab color='success' aria-label='add-interesse' size='medium'>
-                                    <Icon>add</Icon>
-                                </Fab>
-                            </Tooltip>
+                            <AddInteresse interesses={interesses} setInteresses={setInteresses} />
                         </CardActions>
                     </Box>
                     <Stack gap={2}>
                         <Divider />
-                        {user.interesses ? (
-                            <Interesses interesses={user.interesses} />
+                        {interesses ? (
+                            <Interesses interesses={interesses} setInteresses={setInteresses} />
                         ) : (
                             <Typography variant='body1' color='textSecondary'>
                                 <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar interesse action */ }}>
@@ -104,7 +107,7 @@ export function Home() {
                     <Stack gap={2}>
                         <Divider />
                         {user.habilidades ? (
-                            <Habilidades habilidades={user.habilidades} />
+                            <Habilidades habilidades={habilidades} />
                         ) : (
                             <Typography variant='body1' color='textSecondary'>
                                 <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar habilidade action */ }}>
@@ -131,7 +134,7 @@ export function Home() {
                     <Stack gap={2}>
                         <Divider />
                         {user.formacoes_academicas ? (
-                            <FormacoesAcademicas formacoes_academicas={user.formacoes_academicas} />
+                            <FormacoesAcademicas formacoes_academicas={formacoesAcademicas} />
                         ) : (
                             <Typography variant='body1' color='textSecondary'>
                                 <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar formacao academica action */ }}>
@@ -158,7 +161,7 @@ export function Home() {
                     <Stack gap={2}>
                         <Divider />
                         {user.experiencias_profissionais ? (
-                            <ExperienciasProfissionais experiencias_profissionais={user.experiencias_profissionais} />
+                            <ExperienciasProfissionais experiencias_profissionais={experienciasProfissionais} />
                         ) : (
                             <Typography variant='body1' color='textSecondary'>
                                 <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar experiencia profissional action */ }}>
@@ -185,7 +188,7 @@ export function Home() {
                     <Stack gap={2}>
                         <Divider />
                         {user.projetos ? (
-                            <Projetos projetos={user.projetos} />
+                            <Projetos projetos={projetos} />
                         ) : (
                             <Typography variant='body1' color='textSecondary'>
                                 <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar projeto action */ }}>

@@ -11,14 +11,8 @@ export function EditResumo(props: IUserContext) {
         setResumo('');
     }
 
-
-    const [isLoading, setIsLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
-
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        setIsLoading(true);
-        setSuccess(false);
         if (resumo === null || resumo === undefined) {
             setResumo('');
         }
@@ -29,15 +23,11 @@ export function EditResumo(props: IUserContext) {
 
         updateUser(payload)
             .then((res) => {
-                setSuccess(true);
-                const updatedUser = res as IUser; 
+                const updatedUser = res as IUser;
                 props.setUser(updatedUser);
             })
             .catch((error) => {
                 console.error(error);
-            })
-            .finally(() => {
-                setIsLoading(false);
             });
     }
 

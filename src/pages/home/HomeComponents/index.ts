@@ -5,4 +5,4 @@ export * from './ExperienciasProfissionais';
 export * from './Projetos';
 
 export * from './editComponents';
-export * from './createComponents';
+export * from './addComponents';
