@@ -32,11 +32,11 @@ Api.interceptors.response.use(
         if (error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
             const refreshToken = localStorage.getItem('refreshToken');
-            await Api.post('/auth/refresh', { refreshToken }).then((res) => {
+            await Api.post('/auth/refresh', { refresh: refreshToken }).then((res) => {
                 if (res.status === 200) {
-                    localStorage.setItem('accessToken', res.data.accessToken);
-                    localStorage.setItem('refreshToken', res.data.refreshToken);
-                    return Api(originalRequest);
+                    localStorage.setItem('accessToken', res.data.access);
+                    localStorage.setItem('refreshToken', res.data.refresh);
+                    Api.defaults.headers.common.Authorization = `Bearer ${res.data.access}`;
                 }
             }).catch(() => {
                 localStorage.removeItem('accessToken');
@@ -44,7 +44,6 @@ Api.interceptors.response.use(
                 window.location.href = '/login';
             });
         }
-        return Promise.reject(error);
     }
 );
 

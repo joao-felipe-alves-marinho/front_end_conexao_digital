@@ -1,10 +1,9 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
-import ProtectedRoutes from './ProtectedRoutes';
-import Base from '../layouts/Base';
-import { Login } from '../pages/login/Login';
-import { Register } from '../pages/register/Register';
-import { Home } from '../pages/Home';
+
 import { UserLoader } from './loaders/UserLoader';
+import { Login, Register, Home } from '../pages';
+import { Base, BaseAuth} from '../layouts';
+
 
 const router = createBrowserRouter([
     {
@@ -25,12 +24,12 @@ const router = createBrowserRouter([
         ]
     },
     {
-        element: <ProtectedRoutes />,
+        element: <BaseAuth />,
+        loader: UserLoader,
         children: [
             {
                 path: '/',
                 element: <Home />,
-                loader: UserLoader,
             },
             {
                 path: '*',
