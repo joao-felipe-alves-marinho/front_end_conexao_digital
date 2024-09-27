@@ -76,7 +76,7 @@ export const Projetos = (props: IProjetoProps) => {
                                             <Box display='flex' justifyContent='space-between' alignItems='center'>
                                                 <Typography variant='h6'><strong>Nome:</strong> {projeto.nome}</Typography>
                                                 <Stack direction='row' spacing={2} >
-                                                    <EditProjeto projeto={projeto} setProjetos={props.setProjetos} />
+                                                    <EditProjeto projeto={projeto} projetos={props.projetos} setProjetos={props.setProjetos} />
                                                     <Tooltip title='Apagar esse Projeto' arrow placement='top' >
                                                         <Fab color='error' aria-label='delete' size='small' onClick={() => handleDeleteProjeto(projeto.id)} >
                                                             <Icon>delete</Icon>
