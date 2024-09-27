@@ -112,7 +112,7 @@ export const FormacoesAcademicas = (props: IFormacoesAcademicasProps) => {
                                 <Stack gap={2}>
                                     <Stack spacing={1} >
                                         <Box display='flex' justifyContent='space-between' alignItems='center'>
-                                            <Typography mb={2} variant='subtitle1' fontWeight='bold' >Nova Formação Academica:</Typography>
+                                            <Typography mb={2} variant='h6' fontWeight='bold' >Nova Formação Academica:</Typography>
                                             <Stack direction='row' spacing={6} >
                                                 <Tooltip title='Salvar Nova Formação Academica' arrow placement='top' >
                                                     <Button size='large' variant='contained' color='primary' onClick={handleSubmit(handleAddNewFormacao)} disabled={!isDirty || !isValid} >Salvar</Button>
@@ -122,6 +122,7 @@ export const FormacoesAcademicas = (props: IFormacoesAcademicasProps) => {
                                                 </Tooltip>
                                             </Stack>
                                         </Box>
+                                        <Divider />
                                         <Stack gap={2}>
                                             <Box>
                                                 <Typography variant='subtitle2'><strong>Curso:</strong></Typography>

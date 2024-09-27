@@ -95,32 +95,7 @@ export const Home = () => {
             
             <FormacoesAcademicas formacoesAcademicas={formacoesAcademicas} setFormacoesAcademicas={setFormacoesAcademicas} />
 
-            <Card raised>
-                <CardContent>
-                    <Box display='flex' justifyContent='space-between' alignItems='center'>
-                        <Typography variant='h5' fontWeight='bold' >Experiências Profissionais:</Typography>
-                        <CardActions>
-                            <Tooltip title='Adicionar uma nova experiência profissional' arrow placement='top' >
-                                <Fab color='success' aria-label='add-experiencia' size='medium'>
-                                    <Icon>add</Icon>
-                                </Fab>
-                            </Tooltip>
-                        </CardActions>
-                    </Box>
-                    <Stack gap={2}>
-                        <Divider />
-                        {user.experiencias_profissionais ? (
-                            <ExperienciasProfissionais experiencias_profissionais={experienciasProfissionais} />
-                        ) : (
-                            <Typography variant='body1' color='textSecondary'>
-                                <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar experiencia profissional action */ }}>
-                                    Adicione uma experiência profissional ao seu perfil!
-                                </Box>
-                            </Typography>
-                        )}
-                    </Stack>
-                </CardContent>
-            </Card>
+            <ExperienciasProfissionais experienciasProfissionais={experienciasProfissionais} setExperienciasProfissionais={setExperienciasProfissionais} />
 
             <Card raised>
                 <CardContent>

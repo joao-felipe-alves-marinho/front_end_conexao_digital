@@ -93,8 +93,8 @@ export interface IExperienciaProfissional {
     cargo: string;
     empresa: string;
     ano_inicio: number;
-    ano_fim: number;
-    descricao: string;
+    ano_fim?: number | undefined;
+    descricao?: string;
     user: TFromUser;
 }
 
@@ -248,11 +248,11 @@ export const deleteFormacaoAcademica = async (formacao_academica_id: number) => 
 };
 
 // User Experiencias Profissionais
-export const createExperienciaProfissional = async (payload: TCreateOrUpdateFormacaoAcademicaPayload) => {
+export const createExperienciaProfissional = async (payload: TCreateOrUpdateExperienciaProfissionalPayload) => {
     const response = await Api.post('/me/experiencias-profissionais', payload);
 
     if (response.status === 200) {
-        const data: IFormacaoAcademica = response.data;
+        const data: IExperienciaProfissional = response.data;
         return data;
     }
 };
