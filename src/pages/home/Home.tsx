@@ -3,7 +3,8 @@ import { useOutletContext } from 'react-router-dom';
 import { Box, Card, CardActions, CardContent, Divider, Fab, Icon, Stack, Tooltip, Typography } from '@mui/material';
 
 import { IUserContext } from '../../layouts/BaseAuth';
-import { AddInteresse, EditResumo, EditUser, ExperienciasProfissionais, FormacoesAcademicas, Habilidades, Interesses, Projetos,  } from './HomeComponents';
+import { AddInteresse, EditResumo, EditUser, ExperienciasProfissionais, FormacoesAcademicas, Habilidades, Interesses, Projetos, } from './HomeComponents';
+import { logoutUser } from '../../services/api/authService/AuthService';
 
 
 export const Home = () => {
@@ -22,6 +23,13 @@ export const Home = () => {
             <Box>
                 <Typography textAlign='center' variant='h2' mb={0}>Bem-vindo, {user.nome}</Typography>
                 <Typography textAlign='center' variant='subtitle1'>Editer seu perfil abaixo.</Typography>
+                <Box display='flex' justifyContent='center'>
+                    <Tooltip title='Sair' arrow placement='top'>
+                        <Fab color='error' aria-label='logout' size='medium' onClick={() => logoutUser()} >
+                            <Icon>logout</Icon>
+                        </Fab>
+                    </Tooltip>
+                </Box>
             </Box>
 
             <Card raised>
@@ -29,7 +37,7 @@ export const Home = () => {
                     <Box display='flex' justifyContent='space-between' alignItems='center'>
                         <Typography variant='h5' fontWeight='bold' >Informações Pessoais</Typography>
                         <CardActions>
-                            <EditUser user={user} setUser={setUser}/>
+                            <EditUser user={user} setUser={setUser} />
                         </CardActions>
                     </Box>
                     <Stack gap={2}>
@@ -51,7 +59,7 @@ export const Home = () => {
                     <Box display='flex' justifyContent='space-between' alignItems='center'>
                         <Typography variant='h5' fontWeight='bold' >Resumo:</Typography>
                         <CardActions>
-                            <EditResumo user={user} setUser={setUser}/>
+                            <EditResumo user={user} setUser={setUser} />
                         </CardActions>
                     </Box>
                     <Box>
@@ -92,7 +100,7 @@ export const Home = () => {
             </Card>
 
             <Habilidades habilidades={habilidades} setHabilidades={setHabilidades} />
-            
+
             <FormacoesAcademicas formacoesAcademicas={formacoesAcademicas} setFormacoesAcademicas={setFormacoesAcademicas} />
 
             <ExperienciasProfissionais experienciasProfissionais={experienciasProfissionais} setExperienciasProfissionais={setExperienciasProfissionais} />
