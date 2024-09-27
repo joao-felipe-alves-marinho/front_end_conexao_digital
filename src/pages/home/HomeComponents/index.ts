@@ -1,6 +1,6 @@
 export * from './Habilidades';
 export * from './Interesses';
-export * from './FormacaoAcademica';
+export * from './FormacoesAcademicas';
 export * from './ExperienciasProfissionais';
 export * from './Projetos';
 

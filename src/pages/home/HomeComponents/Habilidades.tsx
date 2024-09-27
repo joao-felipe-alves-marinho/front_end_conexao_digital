@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Box, Button, Card, CardActions, CardContent, Divider, Fab, FormControl, Icon, InputLabel, MenuItem, Select, Stack, Table, TableBody, TableCell, TableHead, TableRow, TextField, Tooltip, Typography } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -5,7 +6,6 @@ import * as yup from 'yup';
 
 
 import { IHabilidade, createHabilidade, deleteHabilidade } from '../../../services/api/userService/UserService';
-import { useState } from 'react';
 import { EditHabilidade } from './editComponents';
 
 type THabilidade = Omit<IHabilidade, 'user'>;

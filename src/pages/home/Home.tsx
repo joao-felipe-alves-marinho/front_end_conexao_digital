@@ -6,7 +6,7 @@ import { IUserContext } from '../../layouts/BaseAuth';
 import { AddInteresse, EditResumo, EditUser, ExperienciasProfissionais, FormacoesAcademicas, Habilidades, Interesses, Projetos,  } from './HomeComponents';
 
 
-export function Home() {
+export const Home = () => {
     const { user, setUser } = useOutletContext<IUserContext>();
     if (!user) {
         return <p>User not found or not logged in.</p>;
@@ -17,24 +17,6 @@ export function Home() {
     const [formacoesAcademicas, setFormacoesAcademicas] = useState(user.formacoes_academicas);
     const [experienciasProfissionais, setExperienciasProfissionais] = useState(user.experiencias_profissionais);
     const [projetos, setProjetos] = useState(user.projetos);
-
-    const [openNewHabilidade, setOpenNewHabilidade] = useState(false);
-    const [openNewFormacaoAcademica, setOpenNewFormacaoAcademica] = useState(false);
-    const [openNewExperienciaProfissional, setOpenNewExperienciaProfissional] = useState(false);
-    const [openNewProjeto, setOpenNewProjeto] = useState(false);
-
-    const handleOpenNewHabilidade = () => setOpenNewHabilidade(true);
-    const handleCloseNewHabilidade = () => {};
-
-    const handleOpenNewFormacaoAcademica = () => setOpenNewFormacaoAcademica(true);
-    const handleCloseNewFormacaoAcademica = () => setOpenNewFormacaoAcademica(false);
-
-    const handleOpenNewExperienciaProfissional = () => setOpenNewExperienciaProfissional(true);
-    const handleCloseNewExperienciaProfissional = () => setOpenNewExperienciaProfissional(false);
-
-    const handleOpenNewProjeto = () => setOpenNewProjeto(true);
-    const handleCloseNewProjeto = () => setOpenNewProjeto(false);
-
     return (
         <Stack my={2} gap={4}>
             <Box>
@@ -111,32 +93,7 @@ export function Home() {
 
             <Habilidades habilidades={habilidades} setHabilidades={setHabilidades} />
             
-            <Card raised>
-                <CardContent>
-                    <Box display='flex' justifyContent='space-between' alignItems='center'>
-                        <Typography variant='h5' fontWeight='bold' >Formações Academicas:</Typography>
-                        <CardActions>
-                            <Tooltip title='Adicionar uma nova formação academica' arrow placement='top' >
-                                <Fab color='success' aria-label='add-experiencia' size='medium'>
-                                    <Icon>add</Icon>
-                                </Fab>
-                            </Tooltip>
-                        </CardActions>
-                    </Box>
-                    <Stack gap={2}>
-                        <Divider />
-                        {user.formacoes_academicas ? (
-                            <FormacoesAcademicas formacoes_academicas={formacoesAcademicas} />
-                        ) : (
-                            <Typography variant='body1' color='textSecondary'>
-                                <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar formacao academica action */ }}>
-                                    Adicione uma formação acadêmica ao seu perfil!
-                                </Box>
-                            </Typography>
-                        )}
-                    </Stack>
-                </CardContent>
-            </Card>
+            <FormacoesAcademicas formacoesAcademicas={formacoesAcademicas} setFormacoesAcademicas={setFormacoesAcademicas} />
 
             <Card raised>
                 <CardContent>
