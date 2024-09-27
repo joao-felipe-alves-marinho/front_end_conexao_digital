@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material/styles';
 import { ptBR } from '@mui/material/locale';
 import { indigo } from '@mui/material/colors';
 
-const theme = createTheme({
+const Light = createTheme({
     palette: {
         primary: {
             main: indigo[700],
@@ -28,4 +28,4 @@ const theme = createTheme({
     }
 }, ptBR);
 
-export default theme;
+export default Light;
