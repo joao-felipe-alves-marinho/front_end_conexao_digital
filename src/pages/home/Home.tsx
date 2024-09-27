@@ -18,6 +18,23 @@ export function Home() {
     const [experienciasProfissionais, setExperienciasProfissionais] = useState(user.experiencias_profissionais);
     const [projetos, setProjetos] = useState(user.projetos);
 
+    const [openNewHabilidade, setOpenNewHabilidade] = useState(false);
+    const [openNewFormacaoAcademica, setOpenNewFormacaoAcademica] = useState(false);
+    const [openNewExperienciaProfissional, setOpenNewExperienciaProfissional] = useState(false);
+    const [openNewProjeto, setOpenNewProjeto] = useState(false);
+
+    const handleOpenNewHabilidade = () => setOpenNewHabilidade(true);
+    const handleCloseNewHabilidade = () => {};
+
+    const handleOpenNewFormacaoAcademica = () => setOpenNewFormacaoAcademica(true);
+    const handleCloseNewFormacaoAcademica = () => setOpenNewFormacaoAcademica(false);
+
+    const handleOpenNewExperienciaProfissional = () => setOpenNewExperienciaProfissional(true);
+    const handleCloseNewExperienciaProfissional = () => setOpenNewExperienciaProfissional(false);
+
+    const handleOpenNewProjeto = () => setOpenNewProjeto(true);
+    const handleCloseNewProjeto = () => setOpenNewProjeto(false);
+
     return (
         <Stack my={2} gap={4}>
             <Box>
@@ -92,33 +109,8 @@ export function Home() {
                 </CardContent>
             </Card>
 
-            <Card raised>
-                <CardContent>
-                    <Box display='flex' justifyContent='space-between' alignItems='center'>
-                        <Typography variant='h5' fontWeight='bold' >Habilidades:</Typography>
-                        <CardActions>
-                            <Tooltip title='Adicionar uma nova habilidade' arrow placement='top' >
-                                <Fab color='success' aria-label='add-habilidade' size='medium'>
-                                    <Icon>add</Icon>
-                                </Fab>
-                            </Tooltip>
-                        </CardActions>
-                    </Box>
-                    <Stack gap={2}>
-                        <Divider />
-                        {user.habilidades ? (
-                            <Habilidades habilidades={habilidades} />
-                        ) : (
-                            <Typography variant='body1' color='textSecondary'>
-                                <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar habilidade action */ }}>
-                                    Adicione uma habilidade ao seu perfil!
-                                </Box>
-                            </Typography>
-                        )}
-                    </Stack>
-                </CardContent>
-            </Card>
-
+            <Habilidades habilidades={habilidades} setHabilidades={setHabilidades} />
+            
             <Card raised>
                 <CardContent>
                     <Box display='flex' justifyContent='space-between' alignItems='center'>

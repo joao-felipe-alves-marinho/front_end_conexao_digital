@@ -66,7 +66,7 @@ export interface IInteresse {
 
 type TCreateOrUpdateInteressePayload = Pick<IInteresse, 'nome'>;
 
-interface IHabilidade {
+export interface IHabilidade {
     id: number;
     nome: string;
     nivel: number;

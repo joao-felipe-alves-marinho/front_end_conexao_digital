@@ -37,7 +37,9 @@ Api.interceptors.response.use(
                     localStorage.setItem('accessToken', res.data.access);
                     localStorage.setItem('refreshToken', res.data.refresh);
                     Api.defaults.headers.common.Authorization = `Bearer ${res.data.access}`;
-                    Api(originalRequest);
+                    Api(originalRequest).then(() => {
+                        window.location.reload();
+                    })
                 }
             }).catch(() => {
                 localStorage.removeItem('accessToken');

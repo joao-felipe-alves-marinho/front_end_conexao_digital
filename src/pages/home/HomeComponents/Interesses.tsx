@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { Chip, Stack } from '@mui/material';
 
-import { IInteresse, IUser, deleteInteresse } from '../../../services/api/userService/UserService';
+import { IInteresse, deleteInteresse } from '../../../services/api/userService/UserService';
 
 type TInteresse = Omit<IInteresse, 'user'>;
 
@@ -12,10 +11,10 @@ interface IInteresseProps {
 
 export function Interesses(props: IInteresseProps) {
 
-    const handleDelete = (id: number) => {
-        deleteInteresse(id)
+    const handleDelete = (interesseId: number) => {
+        deleteInteresse(interesseId)
             .then(() => {
-                props.setInteresses(props.interesses.filter((interesse) => interesse.id !== id));
+                props.setInteresses(props.interesses.filter((interesse) => interesse.id !== interesseId));
             });
     };
 

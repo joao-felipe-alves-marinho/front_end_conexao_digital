@@ -111,6 +111,7 @@ export function EditUser(props: IUserContext) {
                         <FormControl fullWidth>
                             <InputLabel id='genero-label'>Gênero</InputLabel>
                             <Select
+                                label='Gênero'
                                 labelId='genero-label'
                                 id='genero'
                                 {...register('genero')}
@@ -137,7 +138,7 @@ export function EditUser(props: IUserContext) {
                             }}
                                 {...register('deficiencia')}
                             />
-                        } />    
+                        } />
                     </Stack>
                 </DialogContent>
                 <DialogActions>
