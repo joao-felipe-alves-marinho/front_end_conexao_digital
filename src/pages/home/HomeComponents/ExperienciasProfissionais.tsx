@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 import { IExperienciaProfissional, createExperienciaProfissional, deleteExperienciaProfissional } from '../../../services/api/userService/UserService';
-import { Edit } from '@mui/icons-material';
 import { EditExperiencia } from './editComponents';
 
 type TExperiencia = Omit<IExperienciaProfissional, 'user'>;

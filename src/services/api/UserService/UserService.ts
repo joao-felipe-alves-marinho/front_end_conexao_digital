@@ -24,8 +24,8 @@ export interface IUser {
         cargo: string;
         empresa: string;
         ano_inicio: number;
-        ano_fim: number;
-        descricao: string;
+        ano_fim?: number;
+        descricao?: string;
     }[];
     projetos: {
         id: number;
@@ -103,7 +103,7 @@ type TCreateOrUpdateExperienciaProfissionalPayload = Pick<IExperienciaProfission
 export interface IProjeto {
     id: number;
     nome: string;
-    descricao: string;
+    descricao?: string;
     link: string;
     user: TFromUser;
 }

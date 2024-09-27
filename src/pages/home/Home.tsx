@@ -97,32 +97,7 @@ export const Home = () => {
 
             <ExperienciasProfissionais experienciasProfissionais={experienciasProfissionais} setExperienciasProfissionais={setExperienciasProfissionais} />
 
-            <Card raised>
-                <CardContent>
-                    <Box display='flex' justifyContent='space-between' alignItems='center'>
-                        <Typography variant='h5' fontWeight='bold' >Projetos:</Typography>
-                        <CardActions>
-                            <Tooltip title='Adicionar um novo projeto' arrow placement='top' >
-                                <Fab color='success' aria-label='add-projeto' size='medium'>
-                                    <Icon>add</Icon>
-                                </Fab>
-                            </Tooltip>
-                        </CardActions>
-                    </Box>
-                    <Stack gap={2}>
-                        <Divider />
-                        {user.projetos ? (
-                            <Projetos projetos={projetos} />
-                        ) : (
-                            <Typography variant='body1' color='textSecondary'>
-                                <Box component='span' sx={{ cursor: 'pointer' }} onClick={() => {/* Add the logic to trigger the adicionar projeto action */ }}>
-                                    Adicione um projeto ao seu perfil!
-                                </Box>
-                            </Typography>
-                        )}
-                    </Stack>
-                </CardContent>
-            </Card>
+            <Projetos projetos={projetos} setProjetos={setProjetos} />
         </Stack>
     );
 };
