@@ -17,8 +17,6 @@ const RegisterSchema = yup.object({
     genero: yup.string().oneOf(['M', 'F', 'O'], 'Gênero inválido.').required('Esse campo é obrigatorio.'),
     telefone: yup.string().required('Esse campo é obrigatorio.').min(10, 'O telefone deve ter pelo menos 10 caracteres.').max(11, 'O telefone deve ter no máximo 11 caracteres.'),
     deficiencia: yup.boolean(),
-    resumo: yup.string(),
-    avatar: yup.string(),
 });
 
 export const Register = () => {
@@ -32,8 +30,6 @@ export const Register = () => {
             genero: 'M',
             telefone: '',
             deficiencia: false,
-            resumo: '',
-            avatar: '',
         },
         resolver: yupResolver(RegisterSchema),
         mode: 'onChange'
@@ -55,8 +51,6 @@ export const Register = () => {
             genero: data.genero,
             telefone: data.telefone,
             deficiencia: data.deficiencia,
-            resumo: data.resumo,
-            avatar: data.avatar,
         }
         )
             .then(() => {
