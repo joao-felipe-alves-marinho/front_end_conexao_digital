@@ -1,6 +1,6 @@
 import { Chip, Stack } from '@mui/material';
 
-import { IInteresse, deleteInteresse } from '../../../services/api/userService/UserService';
+import { IInteresse, deleteInteresse } from '../../../services/api/UserService/UserService';
 
 type TInteresse = Omit<IInteresse, 'user'>;
 
@@ -9,7 +9,7 @@ interface IInteresseProps {
     setInteresses: React.Dispatch<React.SetStateAction<TInteresse[]>>;
 }
 
-export function Interesses(props: IInteresseProps) {
+export const Interesses = (props: IInteresseProps) => {
 
     const handleDelete = (interesseId: number) => {
         deleteInteresse(interesseId)
@@ -32,4 +32,4 @@ export function Interesses(props: IInteresseProps) {
             ))}
         </Stack>
     );
-}
+};

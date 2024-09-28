@@ -9,15 +9,16 @@ import { logoutUser } from '../../services/api/authService/AuthService';
 
 export const Home = () => {
     const { user, setUser } = useOutletContext<IUserContext>();
+
+    const [interesses, setInteresses] = useState(user?.interesses || []);
+    const [habilidades, setHabilidades] = useState(user?.habilidades || []);
+    const [formacoesAcademicas, setFormacoesAcademicas] = useState(user?.formacoes_academicas || []);
+    const [experienciasProfissionais, setExperienciasProfissionais] = useState(user?.experiencias_profissionais || []);
+    const [projetos, setProjetos] = useState(user?.projetos || []);
+
     if (!user) {
         return <p>User not found or not logged in.</p>;
     }
-
-    const [interesses, setInteresses] = useState(user.interesses);
-    const [habilidades, setHabilidades] = useState(user.habilidades);
-    const [formacoesAcademicas, setFormacoesAcademicas] = useState(user.formacoes_academicas);
-    const [experienciasProfissionais, setExperienciasProfissionais] = useState(user.experiencias_profissionais);
-    const [projetos, setProjetos] = useState(user.projetos);
     return (
         <Stack my={2} gap={4}>
             <Box>

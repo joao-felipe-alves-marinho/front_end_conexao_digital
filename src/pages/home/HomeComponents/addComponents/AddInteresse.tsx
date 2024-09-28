@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Fab, Icon, Stack, TextField, Tooltip } from '@mui/material';
 
-import { IInteresse, createInteresse } from '../../../../services/api/userService/UserService';
+import { IInteresse, createInteresse } from '../../../../services/api/UserService/UserService';
 
 type TInteresse = Omit<IInteresse, 'user'>;
 

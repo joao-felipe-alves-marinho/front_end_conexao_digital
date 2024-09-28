@@ -1,5 +1,5 @@
 // loaders/getMeLoader.ts
-import { getMe } from '../../services/api/userService/UserService';
+import { getMe } from '../../services/api/UserService/UserService';
 
 export const UserLoader = async () => {
     try {

@@ -19,7 +19,7 @@ const loginSchema = yup.object({
 });
 
 
-export function Login() {
+export const Login = () => {
     const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm({
         defaultValues: {
             username: '',
@@ -35,7 +35,7 @@ export function Login() {
     const [alert, setAlert] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    function onSubmit(data: LoginForm) {
+    const onSubmit = (data: LoginForm) => {
         setIsLoading(true);
         setSuccess(false);
         setAlert(false);
@@ -50,10 +50,10 @@ export function Login() {
             .finally(() => {
                 setIsLoading(false);
             });
-    }
+    };
 
     const [showPassword, setShowPassword] = useState(false);
-    function toggleShowPassword() { setShowPassword((show) => !show); }
+    const toggleShowPassword = () => { setShowPassword((show) => !show); };
 
     return (
         <Stack mt={8} gap={2}>
@@ -109,4 +109,4 @@ export function Login() {
             <Typography align="center">Ainda não possui uma conta? <Link href='/register'>Cadastre-se</Link></Typography>
         </Stack>
     );
-} 
+}; 

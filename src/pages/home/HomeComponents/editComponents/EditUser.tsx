@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 import { IUserContext } from '../../../../layouts';
-import { IUser, TUpdateUserPayload, updateUser } from '../../../../services/api/userService/UserService';
+import { IUser, TUpdateUserPayload, updateUser } from '../../../../services/api/UserService/UserService';
 
 const EditUserSchema = yup.object({
     email: yup.string().lowercase().required('Esse campo é obrigatorio.').email('E-mail invalido.').min(5, 'O e-mail deve ter pelo menos 5 caracteres').max(255, 'O e-mail deve ter no máximo 255 caracteres.'),
@@ -125,7 +125,7 @@ export function EditUser(props: IUserContext) {
                             <Checkbox inputProps={{
                                 'aria-label': 'Deficiencia',
                             }}
-                                {...register('deficiencia')}
+                            {...register('deficiencia')}
                             />
                         } />
                     </Stack>

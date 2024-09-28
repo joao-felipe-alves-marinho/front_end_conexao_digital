@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { IFormacaoAcademica, updateFormacaoAcademica } from '../../../../services/api/userService/UserService';
+import { IFormacaoAcademica, updateFormacaoAcademica } from '../../../../services/api/UserService/UserService';
 
 type TFormacao = Omit<IFormacaoAcademica, 'user'>;
 
@@ -39,12 +39,12 @@ export const EditFormacao = (props: IFormacoesAcademicasProps) => {
         updateFormacaoAcademica(props.formacao.id, data).then((res) => {
             props.setFormacoesAcademicas(props.formacoesAcademicas.map((formacao) => formacao.id === props.formacao.id ? res as TFormacao : formacao));
         });
-    }
+    };
     const [open, setOpen] = useState(false);
 
     const toggleOpen = () => {
         setOpen(oldOpen => !oldOpen);
-    }
+    };
 
     return (
         <>
@@ -125,4 +125,4 @@ export const EditFormacao = (props: IFormacoesAcademicasProps) => {
             </Dialog >
         </>
     );
-}
+};

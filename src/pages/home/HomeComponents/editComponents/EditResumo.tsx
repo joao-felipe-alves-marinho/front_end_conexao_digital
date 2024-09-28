@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Fab, Icon, IconButton, Stack, TextField, Tooltip } from '@mui/material';
 
-import { IUser, TUpdateUserPayload, updateUser } from '../../../../services/api/userService/UserService';
+import { IUser, TUpdateUserPayload, updateUser } from '../../../../services/api/UserService/UserService';
 import { IUserContext } from '../../../../layouts';
 
 export function EditResumo(props: IUserContext) {
@@ -9,7 +9,7 @@ export function EditResumo(props: IUserContext) {
 
     const handleClearResumo = () => {
         setResumo('');
-    }
+    };
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();

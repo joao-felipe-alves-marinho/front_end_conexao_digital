@@ -39,7 +39,7 @@ Api.interceptors.response.use(
                     Api.defaults.headers.common.Authorization = `Bearer ${res.data.access}`;
                     Api(originalRequest).then(() => {
                         window.location.reload();
-                    })
+                    });
                 }
             }).catch(() => {
                 localStorage.removeItem('accessToken');

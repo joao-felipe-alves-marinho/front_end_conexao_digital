@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { IHabilidade, updateHabilidade } from '../../../../services/api/userService/UserService';
+import { IHabilidade, updateHabilidade } from '../../../../services/api/UserService/UserService';
 
 type THabilidade = Omit<IHabilidade, 'user'>;
 
@@ -33,12 +33,12 @@ export const EditHabilidade = (props: IHabilidadesProps) => {
         updateHabilidade(props.habilidade.id, data).then((res) => {
             props.setHabilidades(props.habilidades.map((habilidade) => habilidade.id === props.habilidade.id ? res as THabilidade : habilidade));
         });
-    }
+    };
     const [open, setOpen] = useState(false);
 
     const toggleOpen = () => {
         setOpen(oldOpen => !oldOpen);
-    }
+    };
 
     return (
         <>
@@ -89,4 +89,4 @@ export const EditHabilidade = (props: IHabilidadesProps) => {
             </Dialog>
         </>
     );
-}
+};

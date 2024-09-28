@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 
-import { IHabilidade, createHabilidade, deleteHabilidade } from '../../../services/api/userService/UserService';
+import { IHabilidade, createHabilidade, deleteHabilidade } from '../../../services/api/UserService/UserService';
 import { EditHabilidade } from './editComponents';
 
 type THabilidade = Omit<IHabilidade, 'user'>;
@@ -44,13 +44,13 @@ export function Habilidades(props: IHabilidadesProps) {
             handleCloseNewHabilidade();
 
         });
-    }
+    };
 
     const handleDeleteHabilidade = (habilidadeId: number) => {
         deleteHabilidade(habilidadeId).then(() => {
             props.setHabilidades(props.habilidades.filter((habilidade) => habilidade.id !== habilidadeId));
         });
-    }
+    };
 
 
     return (

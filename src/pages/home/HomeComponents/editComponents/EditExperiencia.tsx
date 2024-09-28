@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { IExperienciaProfissional, updateExperienciaProfissional } from '../../../../services/api/userService/UserService';
+import { IExperienciaProfissional, updateExperienciaProfissional } from '../../../../services/api/UserService/UserService';
 
 type TExperiencia = Omit<IExperienciaProfissional, 'user'>;
 
@@ -40,12 +40,12 @@ export const EditExperiencia = (props: IExperienciasProfissionaisProps) => {
         updateExperienciaProfissional(props.experiencia.id, data).then((res) => {
             props.setExperienciasProfissionais(props.experienciasProfissionais.map((experiencia) => experiencia.id === props.experiencia.id ? res as TExperiencia : experiencia));
         });
-    }
+    };
     const [open, setOpen] = useState(false);
 
     const toggleOpen = () => {
         setOpen(oldOpen => !oldOpen);
-    }
+    };
 
     return (
         <>
@@ -131,4 +131,4 @@ export const EditExperiencia = (props: IExperienciasProfissionaisProps) => {
             </Dialog >
         </>
     );
-}
+};

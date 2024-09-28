@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { IExperienciaProfissional, createExperienciaProfissional, deleteExperienciaProfissional } from '../../../services/api/userService/UserService';
+import { IExperienciaProfissional, createExperienciaProfissional, deleteExperienciaProfissional } from '../../../services/api/UserService/UserService';
 import { EditExperiencia } from './editComponents';
 
 type TExperiencia = Omit<IExperienciaProfissional, 'user'>;
@@ -41,20 +41,20 @@ export const ExperienciasProfissionais = (props: IExperienciasProfissionaisProps
     const handleCloseNewExperiencia = () => {
         setOpenNewExperiencia(false);
         reset();
-    }
+    };
 
     const handleAddNewExperiencia = (data: Omit<TExperiencia, 'id'> & { ano_fim?: number }) => {
         createExperienciaProfissional(data).then((res) => {
             props.setExperienciasProfissionais([...props.experienciasProfissionais, res as TExperiencia]);
             handleCloseNewExperiencia();
         });
-    }
+    };
 
     const handleDeleteExperiencia = (experienciaId: number) => {
         deleteExperienciaProfissional(experienciaId).then(() => {
             props.setExperienciasProfissionais(props.experienciasProfissionais.filter((experiencia) => experiencia.id !== experienciaId));
         });
-    }
+    };
 
     return (
         <Card raised>
@@ -189,4 +189,4 @@ export const ExperienciasProfissionais = (props: IExperienciasProfissionaisProps
             </CardContent>
         </Card>
     );
-}
+};

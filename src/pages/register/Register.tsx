@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { createUser, ICreateUserPayload } from '../../services/api/userService/UserService';
+import { createUser, ICreateUserPayload } from '../../services/api/UserService/UserService';
 
 
 const RegisterSchema = yup.object({
@@ -21,7 +21,7 @@ const RegisterSchema = yup.object({
     avatar: yup.string(),
 });
 
-export function Register() {
+export const Register = () => {
     const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm({
         defaultValues: {
             email: '',
@@ -44,7 +44,7 @@ export function Register() {
     const [isLoading, setIsLoading] = useState(false);
     const [alert, setAlert] = useState(false);
 
-    function onSubmit(data: ICreateUserPayload) {
+    const onSubmit = (data: ICreateUserPayload) => {
         setIsLoading(true);
         setAlert(false);
         createUser({
@@ -68,10 +68,10 @@ export function Register() {
             .finally(() => {
                 setIsLoading(false);
             });
-    }
+    };
 
     const [showPassword, setShowPassword] = useState(false);
-    function toggleShowPassword() { setShowPassword((show) => !show); }
+    const toggleShowPassword = () => setShowPassword((show) => !show); 
 
     return (
         <Stack mt={1} gap={2}>
@@ -175,7 +175,7 @@ export function Register() {
                     <Checkbox inputProps={{
                         'aria-label': 'Deficiencia',
                     }}
-                        {...register('deficiencia')}
+                    {...register('deficiencia')}
                     />
                 } />
                 <Button
@@ -190,4 +190,4 @@ export function Register() {
             <Typography align="center">Já possui uma conta? <Link href='/login'>Login</Link></Typography>
         </Stack>
     );
-}
+};

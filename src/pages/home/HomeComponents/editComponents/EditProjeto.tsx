@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { IProjeto, updateProjeto } from '../../../../services/api/userService/UserService';
+import { IProjeto, updateProjeto } from '../../../../services/api/UserService/UserService';
 
 type TProjeto = Omit<IProjeto, 'user'>;
 
@@ -35,12 +35,12 @@ export const EditProjeto = (props: IProjetoProps) => {
         updateProjeto(props.projeto.id, data).then((res) => {
             props.setProjetos(props.projetos.map((projeto) => projeto.id === props.projeto.id ? res as Omit<TProjeto, 'descricao'> : projeto));
         });
-    }
+    };
     const [open, setOpen] = useState(false);
 
     const toggleOpen = () => {
         setOpen(oldOpen => !oldOpen);
-    }
+    };
 
     return (
         <>
@@ -106,4 +106,4 @@ export const EditProjeto = (props: IProjetoProps) => {
             </Dialog >
         </>
     );
-}
+};

@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as  yup from 'yup';
 
-import { IFormacaoAcademica, createFormacaoAcademica, deleteFormacaoAcademica } from '../../../services/api/userService/UserService';
+import { IFormacaoAcademica, createFormacaoAcademica, deleteFormacaoAcademica } from '../../../services/api/UserService/UserService';
 import { EditFormacao } from './editComponents';
 
 type TFormacao = Omit<IFormacaoAcademica, 'user'>;
@@ -41,20 +41,20 @@ export const FormacoesAcademicas = (props: IFormacoesAcademicasProps) => {
     const handleCloseNewFormacao = () => {
         setOpenNewFormacao(false);
         reset();
-    }
+    };
 
     const handleAddNewFormacao = (data: Omit<TFormacao, 'id'>) => {
         createFormacaoAcademica(data).then((res) => {
             props.setFormacoesAcademicas([...props.formacoesAcademicas, res as TFormacao]);
             handleCloseNewFormacao();
         });
-    }
+    };
 
     const handleDeleteFormacao = (formacaoId: number) => {
         deleteFormacaoAcademica(formacaoId).then(() => {
             props.setFormacoesAcademicas(props.formacoesAcademicas.filter((formacao) => formacao.id !== formacaoId));
         });
-    }
+    };
 
     return (
         <Card raised>
@@ -183,4 +183,4 @@ export const FormacoesAcademicas = (props: IFormacoesAcademicasProps) => {
             </CardContent>
         </Card>
     );
-}
+};

@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { IProjeto, createProjeto, deleteProjeto } from '../../../services/api/userService/UserService';
+import { IProjeto, createProjeto, deleteProjeto } from '../../../services/api/UserService/UserService';
 import { EditProjeto } from './editComponents';
 
 type TProjeto = Omit<IProjeto, 'user'>;
@@ -37,20 +37,20 @@ export const Projetos = (props: IProjetoProps) => {
     const handleCloseNewProjeto = () => {
         setOpenNewProjeto(false);
         reset();
-    }
+    };
 
     const handleAddNewProjeto = (data: Omit<TProjeto, 'id'>) => {
         createProjeto(data).then((res) => {
             props.setProjetos([...props.projetos, res as Omit<TProjeto, 'descricao'>]);
             handleCloseNewProjeto();
         });
-    }
+    };
 
     const handleDeleteProjeto = (projetoId: number) => {
         deleteProjeto(projetoId).then(() => {
             props.setProjetos(props.projetos.filter((projeto) => projeto.id !== projetoId));
         });
-    }
+    };
 
     return (
         <Card raised>
@@ -166,4 +166,4 @@ export const Projetos = (props: IProjetoProps) => {
             </CardContent>
         </Card>
     );
-}
+};
