@@ -21,6 +21,10 @@ const router = createBrowserRouter([
                 path: '*',
                 element: <Navigate to="/login" replace />
             },
+            {
+                path: '',
+                element: <Navigate to="/login" replace />
+            },
         ]
     },
     {
