@@ -52,8 +52,6 @@ export interface ICreateUserPayload {
     genero: 'M' | 'F' | 'O';
     telefone: string;
     deficiencia?: boolean;
-    resumo?: string;
-    avatar?: string;
 }
 
 export type TUpdateUserPayload = Partial<Omit<ICreateUserPayload, 'password'>>;
@@ -113,7 +111,7 @@ type TCreateOrUpdateProjetoPayload = Pick<IProjeto, 'nome' | 'descricao' | 'link
 
 // Create New User
 export const createUser = async (payload: ICreateUserPayload) => {
-    const response = await Api.post('/admin/users', payload);
+    const response = await Api.post('/me', payload);
 
     if (response.status === 201) {
         const data: IUser = response.data;
