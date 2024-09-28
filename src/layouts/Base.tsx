@@ -1,7 +1,12 @@
 import { Container } from '@mui/material';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
+import { isAuthenticated } from '../services/api/authService/AuthService';
 
 export function Base() {
+    if (isAuthenticated()) {
+        return <Navigate to="/" replace />
+    }
+
     return (
         <Container maxWidth='sm'>
             <Outlet />
