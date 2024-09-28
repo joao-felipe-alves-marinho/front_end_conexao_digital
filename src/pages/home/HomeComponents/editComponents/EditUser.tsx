@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Fab, FormControl, FormControlLabel, Icon, IconButton, InputLabel, MenuItem, Select, Stack, TextField, Tooltip } from '@mui/material';
+import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Fab, FormControl, FormControlLabel, Icon, InputLabel, MenuItem, Select, Stack, TextField, Tooltip } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -17,7 +17,7 @@ const EditUserSchema = yup.object({
 });
 
 export function EditUser(props: IUserContext) {
-    const { register, handleSubmit, formState: { errors, isDirty, isValid } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             email: props.user?.email ?? '',
             nome: props.user?.nome ?? '',
@@ -30,13 +30,7 @@ export function EditUser(props: IUserContext) {
         mode: 'onChange'
     });
 
-    const [isLoading, setIsLoading] = useState(false);
-    const [success, setSuccess] = useState(false);
-    const [alert, setAlert] = useState(false);
-
     function onSubmit(data: TUpdateUserPayload) {
-        setIsLoading(true);
-        setAlert(false);
         updateUser({
             email: data.email,
             nome: data.nome,
@@ -47,13 +41,8 @@ export function EditUser(props: IUserContext) {
             resumo: props.user?.resumo ?? '',
             avatar: props.user?.avatar ?? '',
         }).then((res) => {
-            setSuccess(true);
             const updatedUser = res as IUser;
             props.setUser(updatedUser);
-        }).catch(() => {
-            setAlert(true);
-        }).finally(() => {
-            setIsLoading(false);
         });
     }
 
