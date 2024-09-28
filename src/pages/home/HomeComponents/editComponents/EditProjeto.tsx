@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Fab, FormControl, FormControlLabel, Icon, IconButton, InputLabel, MenuItem, Select, Stack, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Fab, Icon, Stack, TextField, Tooltip, Typography } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -21,7 +21,7 @@ const EditProjetoSchema = yup.object({
 });
 
 export const EditProjeto = (props: IProjetoProps) => {
-    const { register, handleSubmit, reset, formState: { errors, isDirty, isValid } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             nome: props.projeto.nome,
             descricao: props.projeto.descricao,

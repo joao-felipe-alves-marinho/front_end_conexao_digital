@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Fab, FormControl, FormControlLabel, Icon, IconButton, InputLabel, MenuItem, Select, Stack, TextField, Tooltip } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, FormControl, InputLabel, MenuItem, Select, Stack, TextField, Tooltip } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -20,7 +20,7 @@ const EditHabilidadeSchema = yup.object({
 });
 
 export const EditHabilidade = (props: IHabilidadesProps) => {
-    const { register, handleSubmit, reset, formState: { errors, isDirty, isValid } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues: {
             nome: props.habilidade.nome,
             nivel: props.habilidade.nivel
