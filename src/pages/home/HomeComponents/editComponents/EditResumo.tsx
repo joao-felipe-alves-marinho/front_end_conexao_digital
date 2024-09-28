@@ -4,14 +4,14 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Divider, Fab
 import { IUser, TUpdateUserPayload, updateUser } from '../../../../services/api/UserService/UserService';
 import { IUserContext } from '../../../../layouts';
 
-export function EditResumo(props: IUserContext) {
+export const EditResumo = (props: IUserContext) => {
     const [resumo, setResumo] = useState(props.user?.resumo ?? '');
 
     const handleClearResumo = () => {
         setResumo('');
     };
 
-    function handleSubmit(e: React.FormEvent) {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (resumo === null || resumo === undefined) {
             setResumo('');
@@ -29,16 +29,12 @@ export function EditResumo(props: IUserContext) {
             .catch((error) => {
                 console.error(error);
             });
-    }
+    };
 
     const [open, setOpen] = useState(false);
 
-    function toggleOpen() {
-        setOpen(oldOpen => !oldOpen);
-    }
-
-
-
+    const toggleOpen = () => setOpen(oldOpen => !oldOpen);
+    
     return (
         <>
             <Tooltip title='Editar resumo' arrow placement='top' >
@@ -82,4 +78,4 @@ export function EditResumo(props: IUserContext) {
             </Dialog>
         </>
     );
-}
+};

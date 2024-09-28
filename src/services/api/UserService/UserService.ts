@@ -54,7 +54,16 @@ export interface ICreateUserPayload {
     deficiencia?: boolean;
 }
 
-export type TUpdateUserPayload = Partial<Omit<ICreateUserPayload, 'password'>>;
+export interface TUpdateUserPayload {
+    nome?: string;
+    email?: string;
+    idade?: number;
+    genero?: 'M' | 'F' | 'O';
+    telefone?: string;
+    deficiencia?: boolean;
+    resumo?: string;
+    avatar?: string;
+}
 
 export interface IInteresse {
     id: number;
