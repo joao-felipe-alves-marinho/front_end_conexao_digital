@@ -4,7 +4,7 @@ import { isAuthenticated } from '../services/api/authService/AuthService';
 
 export function Base() {
     if (isAuthenticated()) {
-        return <Navigate to="/" replace />;
+        return <Navigate to="/home" replace />;
     }
 
     return (
