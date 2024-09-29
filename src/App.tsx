@@ -1,6 +1,5 @@
-import { RouterProvider } from 'react-router-dom';
+import { Outlet, } from 'react-router-dom';
 
-import router from './router/Router';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import { ptBR } from 'date-fns/locale';
@@ -13,7 +12,7 @@ function App() {
         <>
             <ThemeProvider theme={Light}>
                 <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ptBR}>
-                    <RouterProvider router={router} />
+                    <Outlet />
                 </LocalizationProvider>
             </ThemeProvider>
         </>
