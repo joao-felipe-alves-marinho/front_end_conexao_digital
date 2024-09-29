@@ -42,7 +42,7 @@ export const Login = () => {
         loginUser(data)
             .then(() => {
                 setSuccess(true);
-                navigate('/');
+                navigate('/home');
             })
             .catch(() => {
                 setAlert(true);

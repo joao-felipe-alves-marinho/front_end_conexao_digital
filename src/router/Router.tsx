@@ -5,7 +5,6 @@ import { Login, Register, Home } from '../pages';
 import { Base, BaseAuth } from '../layouts';
 import App from '../App';
 
-
 const router = createBrowserRouter([
     {
         element: <App />,

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { Box, Card, CardActions, CardContent, Divider, Fab, Icon, Stack, Tooltip, Typography } from '@mui/material';
 
 import { IUserContext } from '../../layouts/BaseAuth';
@@ -10,12 +10,21 @@ import { logoutUser } from '../../services/api/authService/AuthService';
 export const Home = () => {
     const { user, setUser } = useOutletContext<IUserContext>();
 
+    const navigate = useNavigate();
+
     const [interesses, setInteresses] = useState(user?.interesses || []);
     const [habilidades, setHabilidades] = useState(user?.habilidades || []);
     const [formacoesAcademicas, setFormacoesAcademicas] = useState(user?.formacoes_academicas || []);
     const [experienciasProfissionais, setExperienciasProfissionais] = useState(user?.experiencias_profissionais || []);
     const [projetos, setProjetos] = useState(user?.projetos || []);
 
+    const handleLogoutUser = () => {
+        logoutUser()
+            .then(() => {
+                navigate('/login');
+            });
+    };
+    
     if (!user) {
         return <p>User not found or not logged in.</p>;
     }
@@ -26,7 +35,7 @@ export const Home = () => {
                 <Typography textAlign='center' variant='subtitle1'>Editer seu perfil abaixo.</Typography>
                 <Box display='flex' justifyContent='center'>
                     <Tooltip title='Sair' arrow placement='top'>
-                        <Fab color='error' aria-label='logout' size='medium' onClick={() => logoutUser()} >
+                        <Fab color='error' aria-label='logout' size='medium' onClick={handleLogoutUser} >
                             <Icon>logout</Icon>
                         </Fab>
                     </Tooltip>

@@ -50,6 +50,8 @@ export const logoutUser = async () => {
 
     if (response.status === 200) {
         const data: ILogoutResponse = response.data;
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
         return data;
     }
 };
