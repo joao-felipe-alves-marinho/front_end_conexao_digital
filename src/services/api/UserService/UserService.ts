@@ -120,7 +120,7 @@ type TCreateOrUpdateProjetoPayload = Pick<IProjeto, 'nome' | 'descricao' | 'link
 
 // Create New User
 export const createUser = async (payload: ICreateUserPayload) => {
-    const response = await Api.post('/me', payload);
+    const response = await Api.post('/create', payload);
 
     if (response.status === 201) {
         const data: IUser = response.data;
